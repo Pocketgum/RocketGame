@@ -3,13 +3,20 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Movement : MonoBehaviour
-{
-    Rigidbody rb;
-    AudioSource audiosound;
+{   
+    //parameters - for tuning
     [SerializeField] float Mainthrust;
     [SerializeField] float Rotationforce;
+    [SerializeField] AudioClip Mainengine;
 
-    // Start is called before the first frame update
+    
+    // Cache - refrences 
+    Rigidbody rb;
+    AudioSource audiosound;
+
+    //State - memeber varioables like bools 
+
+    
     void Start()
     {
         rb = GetComponent<Rigidbody>();
@@ -30,7 +37,7 @@ public class Movement : MonoBehaviour
             
             if (!audiosound.isPlaying)
             {
-                audiosound.Play();         
+                audiosound.PlayOneShot(Mainengine);       
             }
         }
         else
